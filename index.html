@@ -385,6 +385,7 @@
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(201,168,76,0.15);
     display: flex;
+    grid-column: 1 / -1;
     opacity: 0; animation: fadeUp 0.8s 1s forwards;
   }
   .stat-item {
@@ -894,16 +895,57 @@
   @media (max-width: 768px) {
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 0; gap: 30px; }
-    .hero-title { font-size: 56px; }
-    .ba-card { margin-top: 0; margin-bottom: 20px; }
-    .stats-bar { flex-wrap: wrap; }
-    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-btn { font-size: 9px; padding: 8px 14px; }
+
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 20px 120px;
+      gap: 40px;
+      min-height: auto;
+    }
+    .hero-title { font-size: 48px; }
+    .hero-sub { font-size: 11px; }
+    .hero-btns { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+    .ba-card { margin-top: 0; }
+    .ba-wrapper {
+      width: 100%;
+      aspect-ratio: 5/3;
+    }
+    .teeth-before, .teeth-after {
+      transform: scale(0.7);
+      transform-origin: center bottom;
+    }
+    .ba-label-before, .ba-label-after {
+      font-size: 8px;
+      margin-top: 4px;
+    }
+    .ba-handle {
+      width: 34px; height: 34px;
+      font-size: 13px;
+    }
+    .ba-top-label { font-size: 8px; padding: 4px 8px; }
+    .ba-info { flex-direction: column; gap: 6px; align-items: flex-start; }
+    .ba-info-text { font-size: 10px; }
+    .ba-drag-hint { font-size: 8px; }
+
+    .stats-bar {
+      position: relative;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      flex: 1 1 50%;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .stat-num { font-size: 28px; }
+    .stat-label { font-size: 8px; }
+
     .about, .contact { grid-template-columns: 1fr; padding: 80px 24px; gap: 50px; }
     .services, .doctors, .testimonials { padding: 80px 24px; }
     .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
     .doctors-grid { grid-template-columns: 1fr; }
-    .doctor-card { grid-template-columns: 120px 1fr; }
+    .doctor-card { grid-template-columns: 100px 1fr; }
     .services-header { flex-direction: column; gap: 20px; align-items: flex-start; }
     footer { flex-direction: column; gap: 24px; padding: 40px 24px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
