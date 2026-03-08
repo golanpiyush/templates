@@ -88,9 +88,171 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    display: flex; align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
     position: relative; overflow: hidden;
     padding: 0 60px;
+    gap: 60px;
+  }
+
+  /* BEFORE AFTER CARD */
+  .ba-card {
+    position: relative; z-index: 2;
+    margin-top: 80px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+  .ba-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.2);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,168,76,0.1);
+    cursor: none;
+    user-select: none;
+  }
+  .ba-before {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1a1208 0%, #2d1f0a 40%, #1a1208 100%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+  }
+  .teeth-before { display: flex; gap: 4px; align-items: flex-end; }
+  .tooth-b {
+    background: linear-gradient(to bottom, #c4a96a, #8b7040);
+    border-radius: 4px 4px 8px 8px;
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  .tooth-b::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+    border-radius: inherit;
+  }
+  .t1 { width: 28px; height: 52px; }
+  .t2 { width: 32px; height: 60px; }
+  .t3 { width: 34px; height: 64px; }
+  .t4 { width: 34px; height: 64px; }
+  .t5 { width: 32px; height: 60px; }
+  .t6 { width: 28px; height: 52px; }
+  .t7 { width: 22px; height: 44px; }
+  .t8 { width: 22px; height: 44px; }
+  .tooth-b.stained { background: linear-gradient(to bottom, #9a7a35, #6b5020); }
+  .tooth-b.dark { background: linear-gradient(to bottom, #7a6228, #4a3810); }
+  .ba-label-before {
+    font-size: 9px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-top: 12px;
+  }
+  .ba-after {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0a1a0f 0%, #0f2015 40%, #0a1a0f 100%);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+    clip-path: inset(0 50% 0 0);
+  }
+  .teeth-after { display: flex; gap: 4px; align-items: flex-end; }
+  .tooth-a {
+    background: linear-gradient(to bottom, #ffffff, #e8e0d0);
+    border-radius: 4px 4px 8px 8px;
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.1), 0 0 20px rgba(255,255,255,0.3), 0 2px 8px rgba(0,0,0,0.2);
+    position: relative; overflow: hidden;
+  }
+  .tooth-a::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 15%;
+    width: 25%; height: 70%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent);
+    border-radius: 0 0 4px 4px;
+  }
+  .ta1 { width: 28px; height: 52px; }
+  .ta2 { width: 32px; height: 60px; }
+  .ta3 { width: 34px; height: 64px; }
+  .ta4 { width: 34px; height: 64px; }
+  .ta5 { width: 32px; height: 60px; }
+  .ta6 { width: 28px; height: 52px; }
+  .ta7 { width: 22px; height: 44px; }
+  .ta8 { width: 22px; height: 44px; }
+  .ba-after-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .ba-label-after {
+    font-size: 9px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 12px;
+  }
+  .ba-divider {
+    position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 2px;
+    background: var(--gold);
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 12px rgba(201,168,76,0.8);
+  }
+  .ba-handle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px; height: 44px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 11;
+    box-shadow: 0 0 20px rgba(201,168,76,0.6);
+    font-size: 16px;
+    color: var(--black);
+    font-weight: bold;
+    cursor: none;
+  }
+  .ba-top-labels {
+    position: absolute;
+    top: 16px; left: 0; right: 0;
+    display: flex; justify-content: space-between;
+    padding: 0 20px;
+    z-index: 12;
+    pointer-events: none;
+  }
+  .ba-top-label {
+    font-size: 9px; letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    backdrop-filter: blur(10px);
+  }
+  .ba-top-label.before {
+    background: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .ba-top-label.after {
+    background: rgba(201,168,76,0.2);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+  }
+  .ba-info {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 16px; padding: 0 4px;
+  }
+  .ba-info-text { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1px; }
+  .ba-info-text span { color: var(--gold); }
+  .ba-drag-hint {
+    font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.5);
+    display: flex; align-items: center; gap: 6px;
+    animation: hintPulse 2s ease-in-out infinite;
+  }
+  @keyframes hintPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
   }
 
   .hero-bg {
@@ -731,8 +893,9 @@
   @media (max-width: 768px) {
     nav { padding: 20px 24px; }
     .nav-links { display: none; }
-    .hero { padding: 0 24px; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 0; gap: 30px; }
     .hero-title { font-size: 56px; }
+    .ba-card { margin-top: 0; margin-bottom: 20px; }
     .stats-bar { flex-wrap: wrap; }
     .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .about, .contact { grid-template-columns: 1fr; padding: 80px 24px; gap: 50px; }
@@ -783,6 +946,54 @@
     <div class="hero-btns">
       <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Appointment</button>
       <a href="#services" class="btn-secondary">Our Treatments</a>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER CARD -->
+  <div class="ba-card">
+    <div class="ba-wrapper" id="baWrapper">
+      <!-- BEFORE -->
+      <div class="ba-before">
+        <div class="teeth-before">
+          <div class="tooth-b dark t1"></div>
+          <div class="tooth-b stained t7"></div>
+          <div class="tooth-b t2"></div>
+          <div class="tooth-b stained t3"></div>
+          <div class="tooth-b t4"></div>
+          <div class="tooth-b stained t5"></div>
+          <div class="tooth-b t6"></div>
+          <div class="tooth-b dark t8"></div>
+        </div>
+        <div class="ba-label-before">Before Treatment</div>
+      </div>
+      <!-- AFTER -->
+      <div class="ba-after" id="baAfter">
+        <div class="ba-after-glow"></div>
+        <div class="teeth-after">
+          <div class="tooth-a ta1"></div>
+          <div class="tooth-a ta7"></div>
+          <div class="tooth-a ta2"></div>
+          <div class="tooth-a ta3"></div>
+          <div class="tooth-a ta4"></div>
+          <div class="tooth-a ta5"></div>
+          <div class="tooth-a ta6"></div>
+          <div class="tooth-a ta8"></div>
+        </div>
+        <div class="ba-label-after">After Treatment ✦</div>
+      </div>
+      <!-- DIVIDER -->
+      <div class="ba-divider" id="baDivider">
+        <div class="ba-handle" id="baHandle">⟺</div>
+      </div>
+      <!-- TOP LABELS -->
+      <div class="ba-top-labels">
+        <span class="ba-top-label before">Before</span>
+        <span class="ba-top-label after">After</span>
+      </div>
+    </div>
+    <div class="ba-info">
+      <div class="ba-info-text">Teeth Whitening — <span>Single Session</span></div>
+      <div class="ba-drag-hint">← Drag to Compare →</div>
     </div>
   </div>
 
@@ -1093,6 +1304,45 @@
       btn.style.color = '';
     }, 3000);
   });
+
+  // Before / After Slider
+  const wrapper = document.getElementById('baWrapper');
+  const after = document.getElementById('baAfter');
+  const divider = document.getElementById('baDivider');
+  let isDragging = false;
+
+  function setSlider(pct) {
+    pct = Math.max(2, Math.min(98, pct));
+    after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    divider.style.left = pct + '%';
+  }
+
+  // Auto demo animation on load
+  let autoDemo = true;
+  let demoPct = 50;
+  let demoDir = -1;
+  function runDemo() {
+    if (!autoDemo) return;
+    demoPct += demoDir * 0.4;
+    if (demoPct <= 15) demoDir = 1;
+    if (demoPct >= 85) demoDir = -1;
+    setSlider(demoPct);
+    requestAnimationFrame(runDemo);
+  }
+  setTimeout(runDemo, 1200);
+
+  function getPct(e) {
+    const rect = wrapper.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+
+  wrapper.addEventListener('mousedown', e => { isDragging = true; autoDemo = false; setSlider(getPct(e)); });
+  wrapper.addEventListener('touchstart', e => { isDragging = true; autoDemo = false; setSlider(getPct(e)); }, {passive:true});
+  document.addEventListener('mousemove', e => { if (isDragging) setSlider(getPct(e)); });
+  document.addEventListener('touchmove', e => { if (isDragging) setSlider(getPct(e)); }, {passive:true});
+  document.addEventListener('mouseup', () => isDragging = false);
+  document.addEventListener('touchend', () => isDragging = false);
 
   // Nav scroll effect
   window.addEventListener('scroll', () => {
